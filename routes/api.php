@@ -23,3 +23,6 @@ Route::apiResource('/drones', DroneController::class);
 Route::apiResource('/missions', MissionController::class);
 Route::apiResource('/repairs', RepairController::class);
 Route::apiResource('/tasks', TaskController::class);
+
+Route::get('drones/{id}/tasks', 'App\Http\Controllers\Api\DroneController@tasks');
+Route::get('drones/{id}/repairs', 'App\Http\Controllers\Api\DroneController@repairs');

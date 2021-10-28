@@ -37,6 +37,11 @@ class Drone extends Model
         return $this->hasMany(Repair::class);
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
     public function missions()
     {
         return $this->belongsToMany(Mission::class);

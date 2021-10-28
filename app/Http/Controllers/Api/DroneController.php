@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DroneResource;
+use App\Http\Resources\TaskResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,22 @@ class DroneController extends Controller
     public function show($id)
     {
         return DroneResource::make(Drone::findOrFail($id));
+    }
+
+    public function tasks($id)
+    {
+        return response()->json([
+            "drone_id" => $id,
+            "tasks" => Drone::findOrFail($id)->tasks()->get()
+        ]);
+    }
+
+    public function repairs($id)
+    {
+        return response()->json([
+            "drone_id" => $id,
+            "repairs" => Drone::findOrFail($id)->repairs()->get()
+        ]);
     }
 
     /**
