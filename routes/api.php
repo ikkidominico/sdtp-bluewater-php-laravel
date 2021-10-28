@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DroneController;
+use App\Http\Controllers\Api\MissionController;
 use App\Http\Controllers\Api\OperatorController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/operators', OperatorController::class);
 Route::apiResource('/drones', DroneController::class);
+Route::apiResource('/missions', MissionController::class);

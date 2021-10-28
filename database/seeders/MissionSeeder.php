@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mission;
 use Illuminate\Database\Seeder;
 
 class MissionSeeder extends Seeder
@@ -13,6 +14,6 @@ class MissionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Mission::factory()->count(10)->create();
     }
 }

@@ -23,7 +23,7 @@ class DroneFactory extends Factory
     public function definition()
     {
         return [
-            'codename' => $this->faker->sentence(2) ,
+            'codename' => $this->faker->words(2, true),
             'manufacturer' => $this->faker->company(),
             'model' => $this->faker->word(),
             'serial' => $this->faker->numerify('########'),

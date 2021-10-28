@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Uuid\Uuid;
 
 class Repair extends Model
 {
@@ -29,4 +30,8 @@ class Repair extends Model
         return $this->belongsTo(Drone::class);
     }
 
+    protected static function booted()
+    {
+        static::creating(fn(Repair $repair) => $repair->id = (string) Uuid::uuid4());
+    }
 }

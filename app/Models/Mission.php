@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Uuid\Uuid;
 
 class Mission extends Model
 {
@@ -29,5 +30,10 @@ class Mission extends Model
     public function drones()
     {
         return $this->belongsToMany(Drone::class);
+    }
+
+    protected static function booted()
+    {
+        static::creating(fn(Mission $mission) => $mission->id = (string) Uuid::uuid4());
     }
 }
