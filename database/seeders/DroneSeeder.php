@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Drone;
 use Illuminate\Database\Seeder;
 
 class DroneSeeder extends Seeder
@@ -13,6 +14,6 @@ class DroneSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Drone::factory()->count(10)->create();
     }
 }
