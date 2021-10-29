@@ -49,6 +49,14 @@ class MissionController extends Controller
         return MissionResource::make(Mission::findOrFail($id));
     }
 
+    public function drones($id)
+    {
+        return response()->json([
+            "mission_id" => $id,
+            "drones" => Mission::findOrFail($id)->drones()->get()
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

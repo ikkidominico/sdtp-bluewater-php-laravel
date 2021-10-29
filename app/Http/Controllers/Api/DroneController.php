@@ -49,11 +49,11 @@ class DroneController extends Controller
         return DroneResource::make(Drone::findOrFail($id));
     }
 
-    public function tasks($id)
+    public function missions($id)
     {
         return response()->json([
             "drone_id" => $id,
-            "tasks" => Drone::findOrFail($id)->tasks()->get()
+            "missions" => Drone::findOrFail($id)->missions()->get()
         ]);
     }
 
@@ -64,6 +64,15 @@ class DroneController extends Controller
             "repairs" => Drone::findOrFail($id)->repairs()->get()
         ]);
     }
+
+    public function tasks($id)
+    {
+        return response()->json([
+            "drone_id" => $id,
+            "tasks" => Drone::findOrFail($id)->tasks()->get()
+        ]);
+    }
+
 
     /**
      * Update the specified resource in storage.

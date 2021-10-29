@@ -13,14 +13,13 @@ class CreateDronesMissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('drones_missions', function (Blueprint $table) {
+        Schema::create('drone_mission', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
             $table->uuid('drone_id');
             $table->foreign('drone_id')->references('id')->on('drones');
             $table->uuid('mission_id');
             $table->foreign('mission_id')->references('id')->on('missions');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateDronesMissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drones_missions');
+        Schema::dropIfExists('drone_mission');
     }
 }
