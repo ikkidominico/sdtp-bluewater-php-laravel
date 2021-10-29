@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Operator;
+namespace Tests\Feature;
 
 use App\Models\Operator;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class OperatorTest extends TestCase
 {
-
     use WithFaker;
 
     public function test_store_operator() 
@@ -60,14 +59,13 @@ class OperatorTest extends TestCase
     public function test_delete_operator()
     {
         $cpf = $this->faker->numerify('###.###.###-##');
-        $before = [
+        $data = [
             'cpf' => $cpf,
             'name' => $this->faker->name()
         ];
-        $response = $this->json('POST', route('operators.store'), $before);
+        $response = $this->json('POST', route('operators.store'), $data);
         $operator = Operator::select()->where('cpf', $cpf)->first();
         $response = $this->delete('api/operators/'.$operator->id);
         $response->assertStatus(200);
     }
-
 }
