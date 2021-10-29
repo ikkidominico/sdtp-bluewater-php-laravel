@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Bluewater
+  description: Bluewater API Resources Specification.
+  version: 0.1.1
+
+servers:
+  - url: http://localhost:8080/api
+    description: Bluewater local development server
+
+tags:
+  - name: Operator
+    description: Operator's all related features
+
+paths:
+  /operators:
+    get:
+      summary: Return a list with all operators
+      tags:
+        - Operator
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Operator was successfully created.
+    post:
+      summary: Store the descripted operator
+      tags:
+        - Operator
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Operator was successfully created.
+
+components:
+  schemas:
+    Operator:
+      type: object
+      properties:
+        cpf:
+          type: string
+        name:
+          type: string
+      required:
+        - cpf
+        - name
