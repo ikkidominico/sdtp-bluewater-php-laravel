@@ -472,7 +472,6 @@ components:
           type: string
         date:
           type: string
-          format: date
         is_completed:
           type: boolean
         drone_id:
@@ -490,7 +489,6 @@ components:
           type: string
         date:
           type: string
-          format: date
         drone_id:
           type: string
       required:
@@ -510,7 +508,6 @@ components:
           type: number
         date:
           type: string
-          format: date
       required:
         - codename
         - latitude
