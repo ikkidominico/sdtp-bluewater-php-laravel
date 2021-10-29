@@ -11,20 +11,30 @@ servers:
 tags:
   - name: Operator
     description: Operator's all related features
+  - name: Drone
+    description: Drone's all related features
+  - name: Task
+    description: Task's all related features
+  - name: Repair
+    description: Repair's all related features
+  - name: Mission
+    description: Mission's all related features
+  - name: Attach
+    description: Attach Drone to Mission and vice versa
 
 paths:
   /operators:
     get:
-      summary: Return a list with all operators
+      summary: Get all Operators
       tags:
         - Operator
       produces:
         - application/json
       responses:
-        '201':
-          description: Operator was successfully created.
+        '200':
+          description: Operators was successfully retrieved.
     post:
-      summary: Store the descripted operator
+      summary: Create an Operator
       tags:
         - Operator
       consumes:
@@ -40,6 +50,387 @@ paths:
       responses:
         '201':
           description: Operator was successfully created.
+    put:
+      summary: Update an Operator
+      tags:
+        - Operator
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Operator was successfully updated.
+  /operators/{id}:
+    get:
+      summary: Get an Operator
+      tags:
+        - Operator
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Operator identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Operator was successfully retrieved.
+    delete:
+      summary: Delete an Operator
+      tags:
+        - Operator
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Operator identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Operator was successfully deleted.
+
+  /drones:
+    get:
+      summary: Get all Drones
+      tags:
+        - Drone
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Drones was successfully retrieved.
+    post:
+      summary: Create a Drone
+      tags:
+        - Drone
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Drone'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Drone was successfully created.
+    put:
+      summary: Update a Drone
+      tags:
+        - Drone
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Drone'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Drone was successfully updated.
+  /drones/{id}:
+    get:
+      summary: Get a Drone
+      tags:
+        - Drone
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Drone identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Drone was successfully retrieved.
+    delete:
+      summary: Delete a Drone
+      tags:
+        - Drone
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Drone identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Drone was successfully deleted.
+
+  /tasks:
+    get:
+      summary: Get all Tasks
+      tags:
+        - Task
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Tasks was successfully retrieved.
+    post:
+      summary: Create a Task
+      tags:
+        - Task
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Task was successfully created.
+    put:
+      summary: Update a Task
+      tags:
+        - Task
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Task was successfully updated.
+  /tasks/{id}:
+    get:
+      summary: Get a Task
+      tags:
+        - Task
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Task identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Task was successfully retrieved.
+    delete:
+      summary: Delete a Task
+      tags:
+        - Task
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Task identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Task was successfully deleted.
+
+  /repairs:
+    get:
+      summary: Get all Repairs
+      tags:
+        - Repair
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Repairs was successfully retrieved.
+    post:
+      summary: Create a Repair
+      tags:
+        - Repair
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Repair'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Repair was successfully created.
+    put:
+      summary: Update a Repair
+      tags:
+        - Repair
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Repair'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Repair was successfully updated.
+  /repairs/{id}:
+    get:
+      summary: Get a Repair
+      tags:
+        - Repair
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Repair identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Repair was successfully retrieved.
+    delete:
+      summary: Delete a Repair
+      tags:
+        - Repair
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Repair identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Repair was successfully deleted.
+
+  /missions:
+    get:
+      summary: Get all Missions
+      tags:
+        - Mission
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Missions was successfully retrieved.
+    post:
+      summary: Create a Mission
+      tags:
+        - Mission
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mission'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Mission was successfully created.
+    put:
+      summary: Update a Mission
+      tags:
+        - Mission
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mission'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Mission was successfully updated.
+  /missions/{id}:
+    get:
+      summary: Get a Mission
+      tags:
+        - Mission
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Mission identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Mission was successfully retrieved.
+    delete:
+      summary: Delete a Mission
+      tags:
+        - Mission
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Mission identification
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Mission was successfully deleted.
+
+  /attach:
+    post:
+      summary: Attach drone to mission
+      tags:
+        - Attach
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DroneMission'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Drone and Mission was successfully attached.
 
 components:
   schemas:
@@ -53,3 +444,89 @@ components:
       required:
         - cpf
         - name
+    Drone:
+      type: object
+      properties:
+        codename:
+          type: string
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serial:
+          type: string
+        operator_id:
+          type: string
+      required:
+        - codename
+        - manufacturer
+        - model
+        - serial
+        - operator_id
+    Task:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        is_completed:
+          type: boolean
+        drone_id:
+          type: string
+      required:
+        - title
+        - description
+        - date
+        - is_completed
+        - drone_id
+    Repair:
+      type: object
+      properties:
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        drone_id:
+          type: string
+      required:
+        - description
+        - date
+        - drone_id
+    Mission:
+      type: object
+      properties:
+        codename:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        radius:
+          type: number
+        date:
+          type: string
+          format: date
+      required:
+        - codename
+        - latitude
+        - longitude
+        - radius
+        - date
+    DroneMission:
+      type: object
+      properties:
+        drone_id:
+          type: string
+        mission_id:
+          type: string
+      required:
+        - drone_id
+        - mission_is
+
+        
+        
