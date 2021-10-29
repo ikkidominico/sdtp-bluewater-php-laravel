@@ -33,7 +33,7 @@ With your application code in place, now you can move on to configure the Bluewa
 
 ### Environment
 
-Initially, create the .env file copying from the .env.example
+Initially, create the .env file copying from the .env.example:
 
 ```sh
 cp .env.example .env
@@ -70,7 +70,7 @@ You now have the environment settings required to run your application. To cache
 docker-compose exec app php artisan config:cache
 ```
 
-### Migration
+### Migration and Seed
 
 First, test the connection with database running the Laravel artisan migrate command, which creates a migrations table in the database from inside the container:
 
@@ -78,13 +78,19 @@ First, test the connection with database running the Laravel artisan migrate com
 docker-compose exec app php artisan migrate
 ```
 
-Once the migration is complete, you can run a query to check if you are properly connected to the database using the tinker command:
+Once the migration is complete, you can run a command to seed the database with fake informations:
 
 ```sh
-docker-compose exec app php artisan migrate
+docker-compose exec app php artisan db:seed
 ```
 
-And getting the data that you just migrated
+After, you can run a query to check if you are properly connected to the database using the tinker command:
+
+```sh
+docker-compose exec app php artisan tinker
+```
+
+And getting the data that you just migrated:
 
 ```sh
 >>> \DB::table('migrations')->get();
